@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .wrapper{
+        width: 1200px;
+        height: 600px;
+        border-style: double;
+        border-width: 5px;
+        margin: auto;
+        display: inline-block;
+        margin: auto;
+    }
+    .red{
+        background-color: red;
+        border-style: solid;
+        border-width: .5px;
+        color: white;
+
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <h1>Add A New User</h1>
+        <form action="/create_user" method="POST">
+            {% csrf_token %}
+            <h4>First Name:</h4>
+            <br>
+            <input type="text" value="" name="FN">
+            <br>
+            <br>
+            <br>
+            <h4>Last Name:</h4>
+            <br>
+            <input type="text" value="" name="LN">
+            <br>
+            <br>
+            <br>
+            <h4>Email:</h4>
+            <br>
+            <input type="text" value="" name="email">
+            <br>
+            <br>
+            <br>
+            <input type="submit" value="Create" class="BTN">
+            <br>
+            <br>
+            <a href="/">Go Back</a>
+        </form>
+        {% for message in messages %}
+        <p class="red">{{message}}</p>
+        {% endfor %}
+    </div>

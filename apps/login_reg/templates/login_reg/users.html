@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .wrapper{
+        width: 1200px;
+        height: 600px;
+        border-style: double;
+        border-width: 5px;
+        margin: auto;
+        display: inline-block;
+        margin: auto;
+    }
+    .table{
+        width: 1000px;
+        height: 100px;
+    }
+        tr:nth-child(even) {
+        background-color: #c9c9c9;
+        }
+
+</style>
+<body>
+    <div class="wrapper">
+        <h1>Users</h1>
+        <table class="table" action="/processid">
+            <tr>
+                <th>Id</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+            {% for x in users %}
+            <tr>
+                <td>{{ x.id }}</td>
+                <td><a href='/restful_users/show/{{x.id}}'>{{ x.full_name }}</a></td>
+                <td>{{ x.email }}</td>
+                <td>{{ x.created_at }}</td>
+                <td>
+                    <a href='/restful_users/show/{{x.id}}'>Show</a>
+                    <a href='/users/edit/{{x.id}}'>Edit</a>
+                    <a href='/users/{{x.id}}/destroy'>Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+                <a href='/users/new'>Add a new user</a>
+            </tr>
